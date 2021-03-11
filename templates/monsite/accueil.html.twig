@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="col mt-5">
+		<img src="{{ asset('img/photoaccroche.png')}}" alt="photoaccroche" width="100%" />
+	</div>
+
+	<div class="col-12">
+		<h1>Luxury Gold</h1>
+	</div>
+
+	<div class="row mb-5">
+		<div class="col-12 col-lg-4 produit">
+			<img src="{{ asset('' ~ produit1.image ~ '.') }}" alt="crème de jour"/>	
+			<div class="details text-center">
+				<h6>
+					{{ produit1.category }}
+					{{ produit1.nom }}
+				</h6>
+			</div>
+			<div class="details text-center">
+					{{ produit1.price }} €
+			</div>
+			<div class="bouttondetails text-center">
+				<a href="http://127.0.0.1:8000/monsite/shop/1" id="bouttona">Découvrir</a> 
+			</div>
+		</div>
+		
+		<div class="col-12 col-lg-4 produit">
+			<img src="{{ asset('' ~ produit2.image ~ '.') }}" alt="crème de nuit"/>	
+			<div class="details text-center">
+				{{ produit2.category }}
+				{{ produit2.nom }}
+			</div>
+			<div class="details text-center">
+				{{ produit2.price }} €
+			</div>
+			<div class="bouttondetails text-center">
+				<a href="http://127.0.0.1:8000/monsite/shop/2" id="bouttona">Découvrir</a> 
+			</div>			
+		</div>
+		<div class="col-12 col-lg-4 produit">
+			<img src="{{ asset('' ~ produit3.image ~ '.') }}" alt="mon super produit"/>	
+			<div class="details text-center">
+				{{ produit3.category }}
+				{{ produit3.nom }}
+			</div>
+			<div class="details text-center">
+				{{ produit3.price }} €
+			</div>
+			<div class="bouttondetails text-center">
+				<a href="http://127.0.0.1:8000/monsite/shop/3" id="bouttona">Découvrir</a> 
+			</div>
+		</div>
+	</div>
+
+	<div class="row pl-5">
+		<div class="col-12 col-lg-6"  id="imgpostquam">
+			<img src="{{ asset('img/postquam.jpg')}}" alt="Responsive image" width="60%"/>
+		</div>
+		<div class="col-12 col-lg-6" id="postquam">
+			<h2>Votre beauté est un trésor POURQUOI PAS la préserver avec de l'OR!</h2></br>
+			<p><strong>Postquam</strong> une marque professionnelle par excellence désormais accessible à toutes.</br></br>
+			<strong>Reconnue</strong> en Europe et aux USA par les professionnels esthétiques pour la qualité de leurs cosmétiques à base d'or, Caviar et autres ainsi que leurs résultats durables et visible.</br></br>
+			<strong>L'or</strong> vous assure un effet rajeunissant et liftant. Rappelez-vous la légende qui dit " <strong>La reine Cléopâtre</strong> utilisait l'or pour préserver sa jeunesse."
+			Et pourquoi pas Vous!</p>
+		</div>
+	</div>
+{% endblock %}

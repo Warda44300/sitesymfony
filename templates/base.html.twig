@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Mon site e-commerce{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel = "preconnect" href = "https://fonts.gstatic.com">
+        <link href = "https://fonts.googleapis.com/css2? family = Taviraj: wght @ 100 & display = swap" rel = "feuille de style">
+        <link rel = "preconnect" href = "https://fonts.gstatic.com">
+        <link href = "https://fonts.googleapis.com/css2? family = Taviraj: wght @ 100 & display = swap" rel = "feuille de style">
+        <link rel="stylesheet" href="{{ asset('styles.css') }}">
+        {% block stylesheets %}{% endblock %}  
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <img src= "{{ asset('img/logo.jpg') }}" alt="logo" class="logo" height="45px" width="45px"/>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-item nav-link {% if app.request.get('_route')=='accueil' %} active {% endif%}" href="{{ url('accueil') }}">Accueil<span class="sr-only">(current)</span></a>
+                  <a class="nav-item nav-link {% if app.request.get('_route')=='boutique' %} active {% endif%}" href="{{ url('boutique') }}">Boutique</a>
+                  <a class="nav-item nav-link {% if app.request.get('_route')=='propos' %} active {% endif%} " href="{{ url('propos') }}">A propos</a>
+                  <a class="nav-item nav-link {% if app.request.get('_route')=='contact' %} active {% endif%}" href="{{ url('contact') }}">Contact</a>
+                </div>
+
+            {% if not app.user %}
+                <div class="nav-item">
+                    <a href="{{ path('security_login')}}" class="nav-link">
+                        Connexion
+                    </a>
+                </div>
+            {% else %}
+                 <div class="nav-item">
+                    <a href="{{ path('security_logout')}}" class="nav-link">
+                        Déconnexion
+                    </a>
+                </div>
+            {% endif %}
+            </div>
+            <div>
+                <a href="/panier">
+                    <button type="button" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+                        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+                        </svg></path>
+                        <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Panier</font>
+                        </font>
+                    </button>
+                </a>
+            </div>
+        </div>
+        </nav>
+
+        <div class="container-fluid">
+        {% block body %}{% endblock %} 
+        </div>
+
+        <footer class="footer">
+            <div class="container mt-3 pb-1 mr-5 d-flex">
+                <div class="col-4">
+                    <a class="nav-item nav-link {% if app.request.get('_route')=='accueil' %} active {% endif%}" href="{{ url('accueil') }}">Accueil<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link {% if app.request.get('_route')=='boutique' %} active {% endif%}" href="{{ url('boutique') }}">Boutique</a>
+                    <a class="nav-item nav-link {% if app.request.get('_route')=='propos' %} active {% endif%} " href="{{ url('propos') }}">A propos</a>
+                    <a class="nav-item nav-link {% if app.request.get('_route')=='contact' %} active {% endif%}" href="{{ url('contact') }}">Contact</a>
+                </div>
+                <div class="col-4 mt-1">
+                    <a href="">Mention Légale</a>
+                </div>
+                <div class="col-4">
+                    <h1>Facebook</h1>
+                </div>
+               
+            </div>         
+        </footer>
+
+
+    {% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {% endblock %}
+    </body>
+</html>
