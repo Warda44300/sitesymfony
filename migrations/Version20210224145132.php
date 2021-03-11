@@ -19,6 +19,18 @@ final class Version20210224145132 extends AbstractMigration
 
     public function up(Schema $schema) : void
     {
+
+            $this->addSql('CREATE TABLE commande (
+              id int(11) NOT NULL AUTO_INCREMENT,
+              en_cours varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+              valider varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+              created_at datetime NOT NULL,
+              user_id int(11) DEFAULT NULL,
+              PRIMARY KEY (id),
+              KEY IDX_6EEAA67DA76ED395 (user_id)
+            ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci');
+
+
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE commande_produit (commande_id INT NOT NULL, produit_id INT NOT NULL, INDEX IDX_DF1E9E8782EA2E54 (commande_id), INDEX IDX_DF1E9E87F347EFB (produit_id), PRIMARY KEY(commande_id, produit_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE commande_produit ADD CONSTRAINT FK_DF1E9E8782EA2E54 FOREIGN KEY (commande_id) REFERENCES commande (id) ON DELETE CASCADE');
