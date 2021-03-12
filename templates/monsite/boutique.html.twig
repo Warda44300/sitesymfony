@@ -5,8 +5,8 @@
 		{% for produit in produits %}
 			<div class="col-12 col-lg-4 produit">
 				<a href="/monsite/shop/{{produit.id}}">
-				<img src="{{ asset('' ~ produit.image ~ '.')}}" alt="mon super produit"/>
-				 {{ produit.image }}
+				<img src="{{ asset('' ~ produit.image ~ '')}}" alt="mon super produit"/>
+
 				<div class="details text-center">
 					{{ produit.category }}
 				</div>
