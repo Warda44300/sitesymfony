@@ -11,7 +11,7 @@
 
 	<div class="row mb-5">
 		<div class="col-12 col-lg-4 produit">
-			<img src="{{ asset('' ~ produit1.image ~ '.') }}" alt="crème de jour"/>	
+			<img src="{{ asset('' ~ produit1.image ~ '') }}" alt="crème de jour"/>	
 			<div class="details text-center">
 				<h6>
 					{{ produit1.category }}
@@ -27,7 +27,7 @@
 		</div>
 		
 		<div class="col-12 col-lg-4 produit">
-			<img src="{{ asset('' ~ produit2.image ~ '.') }}" alt="crème de nuit"/>	
+			<img src="{{ asset('' ~ produit2.image ~ '') }}" alt="crème de nuit"/>	
 			<div class="details text-center">
 				{{ produit2.category }}
 				{{ produit2.nom }}
@@ -40,7 +40,7 @@
 			</div>			
 		</div>
 		<div class="col-12 col-lg-4 produit">
-			<img src="{{ asset('' ~ produit3.image ~ '.') }}" alt="mon super produit"/>	
+			<img src="{{ asset('' ~ produit3.image ~ '') }}" alt="mon super produit"/>	
 			<div class="details text-center">
 				{{ produit3.category }}
 				{{ produit3.nom }}
