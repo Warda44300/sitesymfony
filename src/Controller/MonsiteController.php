@@ -92,4 +92,10 @@ class MonsiteController extends AbstractController
         return $this->render('monsite/propos.html.twig');
     } 
 
+    /**
+    * @Route("/monsite/mention", name="mention")
+    */
+    public function mention(){
+        return $this->render('monsite/mention.html.twig');
+    }
 }

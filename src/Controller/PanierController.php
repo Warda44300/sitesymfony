@@ -77,7 +77,7 @@ class PanierController extends AbstractController
     }
 
     /**
-    * @Route("/panier/commande", name="commande")
+    * @Route("/commande", name="commande")
     */
     public function commmande(SessionInterface $session){
         $panier = $session->get('panier', []);
