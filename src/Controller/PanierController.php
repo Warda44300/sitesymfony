@@ -101,4 +101,12 @@ class PanierController extends AbstractController
 
         return $this->redirectToRoute("monpanier_index");
     }
+
+     /**
+    * @Route("/validation", name="panier_commande")
+    */
+    public function validation()
+    {
+        return $this->render("panier/validation.html.twig");
+    }
 }
