@@ -24,10 +24,10 @@ class PanierController extends AbstractController
         $panierWithData = [];
 
         foreach ($panier as $id => $quantity) {
-        	$panierWithData[] = [
-        		'produit' => $produitrepository->find($id),
-        		'quantity' => $quantity,
-        	];
+            $panierWithData[] = [
+                'produit' => $produitrepository->find($id),
+                'quantity' => $quantity,
+            ];
         }
 
         $total = 0;
@@ -48,17 +48,17 @@ class PanierController extends AbstractController
      */
     public function add($id, SessionInterface $session)
     {
-       	$panier =$session->get('panier', []);
+        $panier =$session->get('panier', []);
 
-    	if(!empty($panier{$id})) {
-    		$panier[$id]++;
-    	} else{
-    		$panier[$id] = 1;
-    	}
+        if(!empty($panier{$id})) {
+            $panier[$id]++;
+        } else{
+            $panier[$id] = 1;
+        }
 
-    	$session->set('panier', $panier);
+        $session->set('panier', $panier);
 
-    	return $this->redirectToRoute('monpanier_index');
+        return $this->redirectToRoute('monpanier_index');
     }
 
      /**
@@ -77,7 +77,7 @@ class PanierController extends AbstractController
     }
 
     /**
-    * @Route("/commande", name="commande")
+    * @Route("/panier/commande", name="commande")
     */
     public function commmande(SessionInterface $session){
         $panier = $session->get('panier', []);
@@ -85,8 +85,10 @@ class PanierController extends AbstractController
 
         $commande= new Commande();
 
-        $commande->setEnCours('azerthj');
+        $commande->setEncours('blabla');
+        $commande->setValider('azerthj');
         $commande->setCreatedAt(new DateTime());
+        $commande->setUser($this->getUser());
 
          foreach ($panier as $produit) {
             $commande->addProdut($this->getDoctrine()
@@ -99,10 +101,10 @@ class PanierController extends AbstractController
         $em->persist($commande);
         $em->flush();
 
-        return $this->redirectToRoute("monpanier_index");
+        return $this->redirectToRoute("panier_commande");
     }
 
-     /**
+    /**
     * @Route("/validation", name="panier_commande")
     */
     public function validation()

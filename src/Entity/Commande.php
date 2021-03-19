@@ -39,6 +39,11 @@ class Commande
      */
     private $produts;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->produts = new ArrayCollection();
@@ -105,6 +110,18 @@ class Commande
     public function removeProdut(Produit $produt): self
     {
         $this->produts->removeElement($produt);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
