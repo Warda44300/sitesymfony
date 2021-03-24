@@ -8,7 +8,7 @@
         <link href = "https://fonts.googleapis.com/css2? family = Taviraj: wght @ 100 & display = swap" rel = "feuille de style">
         <link rel = "preconnect" href = "https://fonts.gstatic.com">
         <link href = "https://fonts.googleapis.com/css2? family = Taviraj: wght @ 100 & display = swap" rel = "feuille de style">
-       <link rel = "preconnect" href = "https://fonts.gstatic.com">
+        <link rel = "preconnect" href = "https://fonts.gstatic.com">
         <link href = "https://fonts.googleapis.com/css2? family = Montserrat: wght @ 200 & display = swap" rel = "feuille de style">
         <link rel="stylesheet" href="{{ asset('styles.css') }}">
         {% block stylesheets %}{% endblock %}  
@@ -70,10 +70,11 @@
                     <a class="nav-item nav-link {% if app.request.get('_route')=='contact' %} active {% endif%}" href="{{ url('contact') }}">Contact</a>
                 </div>
                 <div class="col-4 mt-1">
-                    <a href="/mention">Mention Légale</a>
+                    <a href="/monsite/mention">Mention Légale</a>
                 </div>
                 <div class="col-4">
-                    <h1>Facebook</h1>
+                    <h6 id="delai">Delai de livraison</h6>
+                    <p id="collisimo">15 jours avec collisimo</p>
                 </div>
                
             </div>         

@@ -17,10 +17,10 @@ nav{
 	color: white;
 }
 .nav-link{
-	color: white !important;
+	color:  #D88B07 !important;
 }
 .nav-link.active{
-	color: #c6910c!important;
+	color: white!important;
 }
 .logo{
 	margin-right: 7%;
@@ -57,13 +57,23 @@ h2{
 	margin-top: 3%;
 }
 h3{
-	margin-top: 10%;
-	text-align: center; 
+	margin-top: 10%; 
 	font-size: 54px;
 	font-weight: bolder;
 	font-family:  'Roboto', sans-serif;
 	color: #D88B07;
 }
+h4{
+	font-family:  'Roboto', sans-serif;
+	color: #D88B07;
+	font-size: 45px;
+}
+h5{
+	font-family:  'Roboto', sans-serif;
+	color: #D88B07;
+	font-size: 30px;
+}
+
 h6{
 	font-family: 'Roboto', sans-serif;
 }
@@ -156,17 +166,38 @@ label{
 	font-weight: bold;
 	font-size: 20px;
 	color: black;
-	margin-left: 15%;
+	margin-left: 5%;
 	padding-top: 4%;
 }
 .form-control{
-	width: 40%;
-	margin-left: 15%;
+	width: 30%;
+	margin-left: 5%;
 }
+
 #button{
 	margin-left: 50%;
 	margin-top: 4%;
 	background-color: #D88B07;
 	font-family: 'Taviraj', serif;
 }
+
+/*page validation*/
+#validation{ 
+	font-size: 24px;
+	color: black;
+	font-family:  'Taviraj', serif;
+}
+a{
+	color: #D88B07;
+}
+a:hover{
+	color: white!important;
+}
+#delai{
+	color: #D88B07;
+}
+#collisimo{
+	color: white;
+}
+
 
