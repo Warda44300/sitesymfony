@@ -21,15 +21,15 @@ class MonsiteController extends AbstractController
 
         $produit1 = $this->getDoctrine()
         ->getRepository(Produit::class)
-        ->find(1); // si tu veux le produit avec id 1
+        ->find(1); // pour récupérer le produit avec id 1
 
         $produit2 = $this->getDoctrine()
         ->getRepository(Produit::class)
-        ->find(2); // si tu veux le produit avec id 2
+        ->find(2); // pour récupérer le produit avec id 2
 
         $produit3 = $this->getDoctrine()
         ->getRepository(Produit::class)
-        ->find(3); // si tu veux le produit avec id 3
+        ->find(3); // pour récupérer le produit avec id 3
 
         return $this->render('monsite/accueil.html.twig',[
             "produit1" => $produit1,

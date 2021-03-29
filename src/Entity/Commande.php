@@ -126,3 +126,7 @@ class Commande
         return $this;
     }
 }
+
+// ORM\Entity(repositoryClass=CommandeRepository::class)= explique à doctrine que ma class Commande qui correspond au selection à mon reposity CommandeRepository.
+// Ma class contient des champs(attributs) qui ont été classé en privé 
+// vu que mes champs sont en privée ma commande à générer automatiquement les méthode get et set 
