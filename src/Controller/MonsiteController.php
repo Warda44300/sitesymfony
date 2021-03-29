@@ -7,20 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Produit;
 
+//Ma class MonsiteController hérite de AbstractController parce que Symfony est fourni avec une classe de contrôleur de base optionnelle appelée
+//@Route = annotation les route me permet de dire à symfony 'quand mon site appellera "/"" voici la fonction que tu dois afficher' 
+//Dans mes fonction je traite la demande et de renvoyer une réponse
+// Dans mes render, mes tableaux contiennent une liste des variables que twig va devoir utiliser
+
 class MonsiteController extends AbstractController
 {
-    /**
-     * @Route("/monsite", name="monsite")
-     */
-    public function index(): Response
-    {
-        return $this->render('monsite/index.html.twig', [
-            'controller_name' => 'MonsiteController',
-        ]);
-    }
-
-     // création function +route pour que la page accuiel s'affiche en premier quand j'appel locahost 8000
-
     /**
      * @Route("/", name="accueil")
      */
@@ -42,7 +35,7 @@ class MonsiteController extends AbstractController
             "produit1" => $produit1,
             "produit2" => $produit2,
             "produit3" => $produit3,
-        ]);
+         ]); 
     }
 
 

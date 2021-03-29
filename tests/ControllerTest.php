@@ -39,6 +39,31 @@ class ControllerTest extends WebTestCase
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 	}
 
+	public function testContactForm()
+    {
+        $client = static::createClient();
+
+        //GET pour afficher le formulaire
+        $crawler = $client->request('GET', '/monsite/contact');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        // on selectionne le bouton pour envoyer le formulaire
+        $form = $crawler->selectButton('envoyer')->form();
+
+        // on rempli le formulaire avec nos données
+        $form['contact_number'] = 'contact_number';
+        $form['user_name'] = 'user_name';
+        $form['user_email'] = 'user_email';
+        $form['message'] = 'message';
+
+        // on envoie le formulaire
+        $client->submit($form);
+
+        // on vérifie que la réponse est 200 ( OK )
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+    }
+
 	public function testProposRoute()
 	{
 		$client = static::createClient();

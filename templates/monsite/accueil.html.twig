@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
 {% block body %}
 	<div class="col mt-5">
@@ -14,7 +14,7 @@
 			<img src="{{ asset('' ~ produit1.image ~ '') }}" alt="crème de jour"/>	
 			<div class="details text-center">
 				<h6>
-					{{ produit1.category }}
+					{{ produit1.category }} {# permet d'affiche le contenu d'une variable défini dans le controller #}
 					{{ produit1.nom }}
 				</h6>
 			</div>
