@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Produit;
 
-//Ma class MonsiteController hérite de AbstractController parce que Symfony est fourni avec une classe de contrôleur de base optionnelle appelée
+//Ma class MonsiteController hérite de AbstractController parce que Symfony est fourni avec une classe de contrôleur de base optionnelle.
 //@Route = annotation les route me permet de dire à symfony 'quand mon site appellera "/"" voici la fonction que tu dois afficher' 
 //Dans mes fonction je traite la demande et de renvoyer une réponse
 // Dans mes render, mes tableaux contiennent une liste des variables que twig va devoir utiliser
@@ -92,3 +92,6 @@ class MonsiteController extends AbstractController
         return $this->render('monsite/mention.html.twig');
     }
 }
+
+// getDoctrine = permet de dire à mon controller que je veux discuté avec doctrine et que je veux le repository tel (EXEMPLE/ repository qui gére un produit )
+// int $id paramétre qui me permet de à symfony que mes route/quelque chose ce quelque chose est un identifaint et pour le récupérer l'identifiant je le passe dans ma function shop et dans la fonction je dit trouver moi l'identifiant du produit qu'on m'a envoyer à l'adresse en haut(url) et je passe un tableau à twig avec une varible qui va devoir afficher un produit et il contiendra les données du produit

@@ -112,3 +112,6 @@ class PanierController extends AbstractController
         return $this->render("panier/validation.html.twig");
     }
 }
+
+
+// Symfony fournit un service de session qui est injecté dans vos services et contrôleurs si vous tapez un argument 

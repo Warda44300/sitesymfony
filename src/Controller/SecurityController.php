@@ -63,3 +63,8 @@ class SecurityController extends AbstractController
  	*/
  	public function logout() {}
 }
+
+
+
+// manager persist permet de garder mon utilisateur par exemple dans le temps
+// la fonction flush envoie la réquête mysql qui mettre en place les différente manipulation faite dans la function
