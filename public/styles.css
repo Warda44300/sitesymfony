@@ -166,18 +166,18 @@ label{
 	font-weight: bold;
 	font-size: 20px;
 	color: black;
-	margin-left: 5%;
+	margin-left: 25%;
 	padding-top: 4%;
 }
 .form-control{
-	width: 30%;
-	margin-left: 5%;
+	width: 35%;
+	margin-left: 25%;
 }
 
 #button{
-	margin-left: 50%;
-	margin-top: 4%;
+	margin-left: 25%;
 	background-color: #D88B07;
+	border-color:  #D88B07;
 	font-family: 'Taviraj', serif;
 }
 
