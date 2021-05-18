@@ -15,29 +15,33 @@ use \DateTime;
 class PanierController extends AbstractController
 {
     /**
-     * @Route("/panier", name="monpanier_index")
+     * @Route("/panier/monpanier", name="monpanier")
      */
-    public function index(SessionInterface $session, ProduitRepository $produitrepository)
+    public function panier(SessionInterface $session, ProduitRepository $produitrepository)
     {
         $panier = $session->get('panier', []);
 
         $panierWithData = [];
-
-        foreach ($panier as $id => $quantity) {
-            $panierWithData[] = [
-                'produit' => $produitrepository->find($id),
-                'quantity' => $quantity,
-            ];
-        }
-
         $total = 0;
 
-        foreach ($panierWithData as $item) {
-            $totalItem = $item['produit']->getPrice() * $item['quantity'];
+        foreach ($panier as $id => $quantity) {
+            $produit = $produitrepository->find($id);
+
+            $panierWithData[] = [
+                'produit' => $produit,
+                'quantity' => $quantity,
+            ];
+
+            $totalItem = $produit->getPrice() * $quantity;
             $total += $totalItem;
         }
 
-        return $this->render('panier/index.html.twig', [
+        // foreach ($panierWithData as $item) {
+        //     $totalItem = $item['produit']->getPrice() * $item['quantity'];
+        //     $total += $totalItem;
+        // }
+
+        return $this->render('panier/monpanier.html.twig', [
             'items' => $panierWithData,
             'total' => $total
         ]);
@@ -48,7 +52,7 @@ class PanierController extends AbstractController
      */
     public function add($id, SessionInterface $session)
     {
-        $panier =$session->get('panier', []);
+        $panier = $session->get('panier', []);
 
         if(!empty($panier{$id})) {
             $panier[$id]++;
@@ -58,7 +62,7 @@ class PanierController extends AbstractController
 
         $session->set('panier', $panier);
 
-        return $this->redirectToRoute('monpanier_index');
+        return $this->redirectToRoute('monpanier');
     }
 
      /**
@@ -90,14 +94,12 @@ class PanierController extends AbstractController
         $commande->setCreatedAt(new DateTime());
         $commande->setUser($this->getUser());
 
-         foreach ($panier as $produit) {
+        foreach ($panier as $produit) {
             $commande->addProdut($this->getDoctrine()
             ->getRepository(Produit::class)
             ->find($produit));
         }
-
-        $session->set('panier', []);
-
+ 
         $em->persist($commande);
         $em->flush();
 
@@ -107,9 +109,30 @@ class PanierController extends AbstractController
     /**
     * @Route("/validation", name="panier_commande")
     */
-    public function validation()
+    public function validation(SessionInterface $session, ProduitRepository $produitrepository)
     {
-        return $this->render("panier/validation.html.twig");
+       $panier = $session->get('panier', []);
+
+        $panierWithData = [];
+        $total = 0;
+
+        foreach ($panier as $id => $quantity) {
+            $produit = $produitrepository->find($id);
+
+            $panierWithData[] = [
+                'produit' => $produit,
+                'quantity' => $quantity,
+            ];
+
+            $totalItem = $produit->getPrice() * $quantity;
+            $total += $totalItem;
+        }
+
+        $session->set('panier', []);
+        return $this->render("panier/validation.html.twig", [
+            'items' => $panierWithData,
+            'total' => $total
+        ]);
     }
 }
 

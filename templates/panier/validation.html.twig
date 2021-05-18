@@ -2,10 +2,46 @@
 
 {% block body %}
 
-	<div class="col-12">
-		<h4 class="text-center mb-3 mt-5" id="commande">Félicitation votre commande est enregistré</h4></br>
-		<p id="validation">Nous vous remercions pour votre commande, celle-ci vous sera envoyée dans un délai de 15 jours avec collisimo.</br>
-		Pour plus d'information veuillez nous <a href="/monsite/contact">contact</a>
+	 <div class="mt-5 mb-5 text-center">
+        <h4>Le récapitulatif de votre commande</h4>
+    </div>
+	<div class="col-12 mb-5">
+		<table class="table">
+		   	<thead>
+		   		<tr>
+		   			<th></th>
+		   			<th>Produit</th>
+		   			<th>Prix</th>
+		   			<th>Quantité</th>
+		   			<th>Total</th>
+		   			<th></th>
+		   		</tr>
+		   	</thead>
+		   	<tbody>
+				{% for item in items %}
+					<tr>
+						<td>
+						<img src="{{ asset('' ~ item.produit.image ~ '') }}" height="50" = alt="mon super produit"/>
+						</td>
+		   				<td>{{item.produit.nom}}</td>
+		   				<td>{{item.produit.price}}€</td>
+		   				<td>{{item.quantity}}</td>
+		   				<td>{{item.produit.price * item.quantity}}€</td>
+		   			</tr>
+		   		{% endfor %}
+		   	</tbody>
+		   	<tfoot>
+		   		<tr>
+		   			<td colspan="4" class="text-right">Total :</td>
+		   			<td>{{ total }}€</td>
+		   			<td></td>
+		   		</tr>
+		   	</tfoot>
+		</table>
+	</div>
+
+	<div class="col-12 mt-5 text-center">
+		<p id="confirmation">Nous vous remercions pour votre commande, celle-ci vous sera envoyée dans un délai de 15 jours avec collisimo. Pour plus d'information veuillez nous <a href="/monsite/contact">contact</a>
 		</p>
 	</div>
 {% endblock %}

@@ -44,8 +44,6 @@ class MonsiteController extends AbstractController
      */
     public function boutique():Response
     {
-        //$categorie = $request->query->get("category");
-
         $produits = $this->getDoctrine()
         ->getRepository(Produit::class)
         ->findAll();

@@ -31,9 +31,9 @@
 				{% for item in items %}
 					<tr>
 		   				<td>{{item.produit.nom}}</td>
-		   				<td>{{item.produit.price}}</td>
+		   				<td>{{item.produit.price}}€</td>
 		   				<td>{{item.quantity}}</td>
-		   				<td>{{item.produit.price * item.quantity}}</td>
+		   				<td>{{item.produit.price * item.quantity}}€</td>
 		   				<td>
 		   					<a href="{{ path('monpanier_remove', {'id' : item.produit.id}) }}" class="btn btn-danger btn-sm justify-conetnt-right">
 		   						<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -48,7 +48,7 @@
 		   	<tfoot>
 		   		<tr>
 		   			<td colspan="3" class="text-right">Total :</td>
-		   			<td>{{ total }}</td>
+		   			<td>{{ total }}€</td>
 		   			<td></td>
 		   		</tr>
 		   	</tfoot>

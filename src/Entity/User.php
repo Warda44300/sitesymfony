@@ -47,8 +47,15 @@ class User implements UserInterface
 
     /**
     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
-    */
+    */  
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user")
+     */
+    private $commandes;
+
     public $confirm_password;
+
     
     public function getId(): ?int
     {
@@ -97,5 +104,32 @@ class User implements UserInterface
 
     public function getRoles() {
         return ['ROLE_USER'];
+    }
+
+    /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes()
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->addProdut($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            $commande->removeProdut($this);
+        }
+
+        return $this;
     }
 }
